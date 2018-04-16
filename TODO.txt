@@ -1,0 +1,5 @@
+als je het echt mooi wil doen dan moet je 2 classes maken
+1 voor de User: dit is enkel de opslag v/d data en directe checks op deze data zoals isAdmin()
+1 voor het managen van users, namelijk de UserManager: deze kan getByEmail doen (en returned een User), All() (returned een array van User objecten) en createUser($naam, $adres) en updateUser(..?..)
+User is dus heel klein en dom, en weet niks van een database(gewijzigd)
+UserManager heeft wel kennis van een database
