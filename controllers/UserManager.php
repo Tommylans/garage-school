@@ -97,11 +97,22 @@ class UserManager
         ]);
     }
 
+    /**
+     * @param $email
+     * @param $wachtwoord
+     * @return bool|User
+     */
     public static function login($email, $wachtwoord)
     {
         $stmt = MySQL::getConnection()->prepare("SELECT id,username,wachtwoord,email FROM users WHERE email = :email");
         $stmt->execute([
-            'email' => $_POST['email'],
+            'email' => $email,
         ]);
+        $user = $stmt->fetchObject();
+        if (password_verify($wachtwoord, $user->wachtwoord)) {
+            return self::getUserByEmail($email);
+        } else {
+            return false;
+        }
     }
 }
