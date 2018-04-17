@@ -35,7 +35,7 @@ class AutoManager
      */
     public static function createAuto($kenteken, $merk, $type, $kmAfstand, $klantid)
     {
-        $stmt = MySQL::getConnection()->prepare("INSERT INTO auto (kenteken, merk, type, kmafstand, klantid) VALUES (?,?,?,?,?)");
+        $stmt = MySQL::getConnection()->prepare("INSERT INTO auto (kenteken, merk, type, kmStand, klantid) VALUES (?,?,?,?,?)");
         return $stmt->execute([
             $kenteken,
             $merk,

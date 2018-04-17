@@ -1,6 +1,7 @@
 <?php
 
 require_once "UserManager.php";
+
 class auto
 {
     var $kenteken,
@@ -12,7 +13,8 @@ class auto
     /**
      * @return User
      */
-    public function getEigenaar() {
+    public function getEigenaar()
+    {
         return UserManager::getUserById($this->klantid);
     }
 }

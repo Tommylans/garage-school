@@ -10,7 +10,7 @@ class MySQL {
         $database = "garage";
 
         try {
-            return $connection = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+            return new PDO("mysql:host=localhost;dbname=$database", $user, $password);
         } catch (PDOException $e) {
             echo $e->getMessage();
             return null;

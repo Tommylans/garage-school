@@ -21,7 +21,7 @@ if (isset($_SESSION['user'])) {
 <body>
 <ul>
     <?php
-    foreach (User::All() as $user) {
+    foreach (UserManager::All() as $user) {
         echo "<li> $user->username </li>";
     }
     ?>
