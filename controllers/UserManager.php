@@ -27,7 +27,7 @@ class UserManager
         ]);
         $stmt = $connection->prepare("INSERT INTO rollen (userid) VALUES (?)");
         $rolStatus = $stmt->execute([$connection->lastInsertId()]);
-        if ($userStatus && $rolStatus) {
+        if (!($userStatus && $rolStatus)) {
             $connection->rollBack();
             die(500);
         }
@@ -59,7 +59,7 @@ class UserManager
     }
 
     /**
-     * @return array
+     * @return User[]
      */
     public static function all()
     {
@@ -72,16 +72,16 @@ class UserManager
      * @param $user User
      * @return bool
      */
-    public static function updateUser($user)
+    public static function updateUser($id, $username, $email, $adres, $plaats, $postcode)
     {
         $stmt = MySQL::getConnection()->prepare("UPDATE users SET username = :username, email = :email, adres = :adres, plaats = :plaats, postcode = :postcode WHERE id = :id");
         return $stmt->execute([
-            'username' => $user->username,
-            'email' => $user->email,
-            'adres' => $user->adres,
-            'plaats' => $user->adres,
-            'postcode' => $user->postcode,
-            'id' => $user->id
+            'username' => $username,
+            'email' => $email,
+            'adres' => $adres,
+            'plaats' => $plaats,
+            'postcode' => $postcode,
+            'id' => $id
         ]);
     }
 
@@ -114,5 +114,10 @@ class UserManager
         } else {
             return false;
         }
+    }
+
+    public static function isLoggedin()
+    {
+        return isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true;
     }
 }

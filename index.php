@@ -1,48 +1,53 @@
 <?php
 session_start();
 require_once "controllers/User.php";
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-</head>
-<body>
-<form action="register.php" method="post">
-    <h1>register</h1>
-    Naam: <input type="text" name="username"><br>
-    Adres: <input type="text" name="adres"><br>
-    Postcode: <input type="text" name="postcode"><br>
-    Plaats: <input type="text" name="plaats"><br>
-    Email: <input type="email" name="email"><br>
-    Wachtwoord: <input type="password" name="wachtwoord"><br>
-    <input type="submit"><br>
-</form>
-<?php
-if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true) {
-    echo '<form action="login.php" method="post">
-                <h1>Login</h1>
-                Email: <input type="email" name="email"><br>
-                Wachtwoord: <input type="password" name="wachtwoord"><br>
-                <input type="submit"><br>
-            </form>';
-} else {
-    echo '<a href="uitloggen.php">Uitloggen</a>';
+if (UserManager::isLoggedin()) {
+    header("Location: panel/index.php");
 }
 ?>
 
-<form action="passwordforget.php" method="post">
-    <h1>Password reset</h1>
-    Email: <input type="email" name="email">
-    <input type="submit">
-</form>
-
-<?php
-if (isset($_SESSION['user']))
-    if (unserialize($_SESSION['user'])->isAdmin())
-        echo '<a href="usersUL.php">Alle users (ADMIN)</a>';
-?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Garage bedrijf</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row align-items-center justify-content-center" style="margin-top: 25%">
+        <div class="col-md-7">
+            <div class="card w-75">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <form action="loginUser.php" method="post">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="register.php">Register</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
 </body>
 </html>
