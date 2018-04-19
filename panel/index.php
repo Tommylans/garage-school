@@ -4,6 +4,7 @@ require_once __DIR__ . "/../controllers/UserManager.php";
 require_once __DIR__ . "/../controllers/AutoManager.php";
 if (!UserManager::isLoggedin()) {
     header("Location: /index.php");
+    exit();
 }
 $user = UserManager::getUserById($_SESSION['id']);
 ?>

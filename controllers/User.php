@@ -43,7 +43,7 @@ class User
             case "Monteur":
                 return 2;
             case "Directie":
-                return 2;
+                return 3;
             case "Planner":
                 return 5;
             case "Systeembeheerder":

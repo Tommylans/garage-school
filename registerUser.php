@@ -12,6 +12,7 @@ if (UserManager::getUserByEmail($_POST['email']) == false) {
         );
         echo $_POST['username'] . " is aangemaakt";
         header("Location: /index.php");
+        exit();
     }
 } else {
     echo "Er is al een account aangemaakt op: " . $_POST['email'];

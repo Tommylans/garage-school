@@ -4,11 +4,13 @@ require_once __DIR__ . "/../controllers/UserManager.php";
 require_once __DIR__ . "/../controllers/AutoManager.php";
 if (!UserManager::isLoggedin()) {
     header("Location: /index.php");
+    exit();
 }
 $user = UserManager::getUserById($_SESSION['id']);
 if (isset($_GET['id'])) {
     if ($user->getRole() !== "Planner" && $user->getRole() !== "Systeembeheerder") {
         header("Location: index.php");
+        exit();
     } else {
         $editUser = UserManager::getUserById($_GET['id']);
     }
@@ -16,6 +18,7 @@ if (isset($_GET['id'])) {
     $editUser = $user;
 } else {
     header("Location: index.php");
+    exit();
 }
 ?>
 
