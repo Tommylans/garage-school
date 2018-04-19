@@ -1,19 +1,26 @@
 <?php
 class MySQL {
+
+    private static $connection;
     /**
      * @return null|PDO
      */
     public static function getConnection()
     {
-        $user = "root";
-        $password = "";
-        $database = "garage";
+        if (!isset(self::$connection)) {
+            $user = "root";
+            $password = "";
+            $database = "garage";
 
-        try {
-            return new PDO("mysql:host=localhost;dbname=$database", $user, $password);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return null;
+            try {
+                self::$connection =  new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+                return self::$connection;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return null;
+            }
+        } else {
+            return self::$connection;
         }
     }
 }

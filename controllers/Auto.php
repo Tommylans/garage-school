@@ -8,7 +8,7 @@ class auto
         $klantid,
         $merk,
         $type,
-        $kmafstand;
+        $kmStand;
 
     /**
      * @return User

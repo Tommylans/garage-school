@@ -16,7 +16,7 @@ class AutoManager
     }
 
     /**
-     * @return array
+     * @return Auto[]
      */
     public static function all()
     {
