@@ -37,7 +37,6 @@ if (!$user->getLevel() >= 3) {
                             <input type="text" class="form-control" id="kenteken" placeholder="Kenteken"
                                    name="kenteken" required">
                         </div>
-
                         <div class="form-group">
                             <label for="merk">Merk</label>
                             <input type="text" class="form-control" maxlength="6" minlength="6" id="merk"

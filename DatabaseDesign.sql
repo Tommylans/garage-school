@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server versie:                10.1.30-MariaDB - mariadb.org binary distribution
+-- Server versie:                10.1.13-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win32
--- HeidiSQL Versie:              9.5.0.5261
+-- HeidiSQL Versie:              9.5.0.5196
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,15 +18,17 @@ USE `garage`;
 
 -- Structuur van  tabel garage.auto wordt geschreven
 CREATE TABLE IF NOT EXISTS `auto` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `kenteken` varchar(50) NOT NULL,
   `merk` varchar(50) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
   `kmStand` int(100) NOT NULL,
   `klantid` int(11) NOT NULL,
-  PRIMARY KEY (`kenteken`),
+  PRIMARY KEY (`id`),
   KEY `klantid` (`klantid`),
+  KEY `kenteken` (`kenteken`),
   CONSTRAINT `FK_auto_users` FOREIGN KEY (`klantid`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Data exporteren was gedeselecteerd
 -- Structuur van  tabel garage.rollen wordt geschreven
@@ -37,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `rollen` (
   PRIMARY KEY (`id`),
   KEY `FK_rollen_users` (`userid`),
   CONSTRAINT `FK_rollen_users` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- Data exporteren was gedeselecteerd
 -- Structuur van  tabel garage.users wordt geschreven
@@ -51,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `wachtwoord` varchar(1000) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unieke gebruiker` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Data exporteren was gedeselecteerd
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

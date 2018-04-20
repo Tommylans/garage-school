@@ -43,6 +43,11 @@ $user = UserManager::getUserById($_SESSION['id']);
                         <a class="nav-link" href="editUser.php">Verander profiel</a>
                     </li>
                 <?php } ?>
+                <?php if ($user->getRole() === "Planner" || $user->getRole() === "Systeembeheerder") { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="createAuto.php">Auto toevoegen</a>
+                    </li>
+                <?php } ?>
             </ul>
             <p class="my-2 mr-sm-2"><?php echo $user->email ?></p>
             <a class="nav-item" href="/uitloggen.php">Uitloggen</a>
@@ -83,6 +88,9 @@ $user = UserManager::getUserById($_SESSION['id']);
                     <th scope="col">Type</th>
                     <th scope="col">Km Stand</th>
                     <th scope="col">Eigenaar</th>
+                    <?php if ($user->getRole() === "Planner" || $user->getRole() === "Systeembeheerder") { ?>
+                        <th scope="col">Aanpassen</th>
+                    <?php } ?>
                 </tr>
                 </thead>
                 <tbody>
@@ -93,6 +101,9 @@ $user = UserManager::getUserById($_SESSION['id']);
                         <td><?php echo $auto->type ?></td>
                         <td><?php echo $auto->kmStand ?> km</td>
                         <td><?php echo $auto->getEigenaar()->email ?></td>
+                        <?php if ($user->getRole() === "Planner" || $user->getRole() === "Systeembeheerder") { ?>
+                            <td><a href="editAuto.php?id=<?php echo $auto->id ?>">Aanpassen</a></td>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
                 </tbody>
