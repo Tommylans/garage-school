@@ -4,7 +4,8 @@ require_once "UserManager.php";
 
 class auto
 {
-    var $kenteken,
+    var $id,
+        $kenteken,
         $klantid,
         $merk,
         $type,

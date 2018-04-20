@@ -47,21 +47,23 @@ if (isset($_GET['id'])) {
                             <input type="text" class="form-control" id="username" placeholder="Gebruikersnaam"
                                    name="username" required value="<?php echo $editUser->username ?>">
                         </div>
-                        <div class="form-group">
-                            <label for="rol">Rol</label>
-                            <select class="form-control" id="rol" name="rol">
-                                <?php if ($user->getRole() === "Systeembeheerder") { ?>
-                                    <option>Systeembeheerder</option>
-                                <?php } ?>
-                                <option>Planner</option>
-                                <option>Directie</option>
-                                <option>Monteur</option>
-                                <option>Klant</option>
-                            </select>
-                            <script>
-                                document.getElementById("rol").value = "<?php echo $editUser->getRole() ?>";
-                            </script>
-                        </div>
+                        <?php if ($user->getRole() === "Systeembeheerder" || $user->getRole() === "Planner") { ?>
+                            <div class="form-group">
+                                <label for="rol">Rol</label>
+                                <select class="form-control" id="rol" name="rol">
+                                    <?php if ($user->getRole() === "Systeembeheerder") { ?>
+                                        <option>Systeembeheerder</option>
+                                    <?php } ?>
+                                    <option>Planner</option>
+                                    <option>Directie</option>
+                                    <option>Monteur</option>
+                                    <option>Klant</option>
+                                </select>
+                                <script>
+                                    document.getElementById("rol").value = "<?php echo $editUser->getRole() ?>";
+                                </script>
+                            </div>
+                        <?php } ?>
                         <div class="form-group">
                             <label for="postcode">Postcode</label>
                             <input type="text" class="form-control" maxlength="6" minlength="6" id="postcode"

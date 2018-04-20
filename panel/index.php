@@ -40,19 +40,19 @@ $user = UserManager::getUserById($_SESSION['id']);
                 <?php } ?>
                 <?php if ($user->getRole() === "Directie" || $user->getRole() === "Monteur") { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Verander profiel</a>
+                        <a class="nav-link" href="editUser.php">Verander profiel</a>
                     </li>
                 <?php } ?>
             </ul>
-            <p><?php $user->username ?></p>
-            <a href="/uitloggen.php">Uitloggen</a>
+            <p class="my-2 mr-sm-2"><?php echo $user->email ?></p>
+            <a class="nav-item" href="/uitloggen.php">Uitloggen</a>
         </div>
     </nav>
 </header>
 <main>
     <div class="container">
         <?php if ($user->getRole() === "Klant") { ?>
-            <h2 style="margin: 1rem">Jou auto's</h2>
+            <h2 style="margin: 1rem">Jouw auto's</h2>
             <table class="table">
                 <thead>
                 <tr>

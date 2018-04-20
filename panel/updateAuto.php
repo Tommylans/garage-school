@@ -6,9 +6,9 @@ if ($user->getRole() !== "Planner" && $user->getRole() !== "Systeembeheerder") {
     header("Location: index.php");
     exit();
 } else {
-    if (isset($_POST['userid'])) {
-        UserManager::updateUser($_POST['userid'], $_POST['username'], $_POST['email'], $_POST['adres'], $_POST['plaats'], $_POST['postcode'], $_POST['rol']);
-        header('Location: gebruikersBeheer.php');
+    if (isset($_POST['autoid'])) {
+        AutoManager::updateAuto($_POST['autoid'], $_POST['kenteken'], $_POST['merk'], $_POST['type'], $_POST['kmstand'], $_POST['eigenaarid']);
+        header('Location: index.php');
         exit();
     } else {
         header("Location: index.php");

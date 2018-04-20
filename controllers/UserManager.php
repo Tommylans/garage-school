@@ -69,13 +69,18 @@ class UserManager
     }
 
     /**
-     * @param $user User
+     * @param $id
+     * @param $username
+     * @param $email
+     * @param $adres
+     * @param $plaats
+     * @param $postcode
      * @return bool
      */
-    public static function updateUser($id, $username, $email, $adres, $plaats, $postcode)
+    public static function updateUser($id, $username, $email, $adres, $plaats, $postcode, $rol)
     {
         $stmt = MySQL::getConnection()->prepare("UPDATE users SET username = :username, email = :email, adres = :adres, plaats = :plaats, postcode = :postcode WHERE id = :id");
-        return $stmt->execute([
+        $usersTabelStatus = $stmt->execute([
             'username' => $username,
             'email' => $email,
             'adres' => $adres,
@@ -83,6 +88,12 @@ class UserManager
             'postcode' => $postcode,
             'id' => $id
         ]);
+        $stmt = MySQL::getConnection()->prepare("UPDATE rollen SET level = ? WHERE userid = ?");
+        $rolTabelStatus = $stmt->execute([
+            $rol,
+            $id
+        ]);
+        return $usersTabelStatus && $rolTabelStatus;
     }
 
     /**
