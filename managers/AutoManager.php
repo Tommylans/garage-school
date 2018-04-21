@@ -1,6 +1,9 @@
 <?php
-require_once __DIR__ . "/../connection/MySQL.php";
-require_once __DIR__ . "/../models/Auto.php";
+
+namespace Garage\Managers;
+
+//require_once __DIR__ . "/../connection/MySQL.php";
+//require_once __DIR__ . "/../models/Auto.php";
 
 class AutoManager
 {

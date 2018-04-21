@@ -1,5 +1,7 @@
 <?php
 
+namespace Garage\Models;
+
 require_once __DIR__ .  "/../managers/UserManager.php";
 
 class auto
