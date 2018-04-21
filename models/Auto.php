@@ -1,6 +1,6 @@
 <?php
 
-require_once "UserManager.php";
+require_once __DIR__ .  "/../managers/UserManager.php";
 
 class auto
 {

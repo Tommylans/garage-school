@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "controllers/User.php";
+require_once "models/User.php";
 if (UserManager::isLoggedin()) {
     header("Location: panel/index.php");
     exit();

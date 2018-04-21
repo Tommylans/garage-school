@@ -1,5 +1,5 @@
 <?php
-require_once "Controllers/UserManager.php";
+require_once "managers/UserManager.php";
 if (UserManager::getUserByEmail($_POST['email']) == false) {
     if (isset($_POST['password'])) {
         UserManager::createUser(

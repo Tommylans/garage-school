@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "controllers/UserManager.php";
+require_once "managers/UserManager.php";
 if ($user = UserManager::login($_POST['email'], $_POST['password'])) {
     $_SESSION['loggedin'] = true;
     $_SESSION['id'] = $user->id;

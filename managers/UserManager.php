@@ -1,5 +1,5 @@
 <?php
-require_once "User.php";
+require_once __DIR__ . "/../models/User.php";
 require_once __DIR__ . "/../connection/MySQL.php";
 
 class UserManager
