@@ -3,6 +3,7 @@ session_start();
 require_once "controllers/User.php";
 if (UserManager::isLoggedin()) {
     header("Location: panel/index.php");
+    exit();
 }
 ?>
 

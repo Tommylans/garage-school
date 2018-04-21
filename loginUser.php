@@ -8,6 +8,7 @@ if ($user = UserManager::login($_POST['email'], $_POST['password'])) {
     session_commit();
     echo "Je bent ingelogt";
     header("Location: panel/index.php");
+    exit();
 } else {
     echo "Je password is fout";
     $_SESSION['message'] = "Password is fout";

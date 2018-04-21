@@ -13,4 +13,4 @@ if (!$user->getLevel() >= 3) {
 }
 AutoManager::createAuto(strtoupper($_POST['kenteken']), $_POST['merk'], $_POST['type'], $_POST['kmstand'], $_POST['eigenaarid']);
 header("Location: index.php");
-
+exit();
