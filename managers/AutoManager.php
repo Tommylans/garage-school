@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../connection/MySQL.php";
-require_once "Auto.php";
+require_once __DIR__ . "/../models/Auto.php";
 
 class AutoManager
 {

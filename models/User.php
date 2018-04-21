@@ -1,5 +1,5 @@
 <?php
-require_once "AutoManager.php";
+require_once __DIR__ . "/../managers/AutoManager.php";
 
 class User
 {
