@@ -7,7 +7,9 @@ class MySQL {
      */
     public static function getConnection()
     {
-        if (!isset(self::$connection)) {
+        if (isset(self::$connection)) {
+            return self::$connection;
+        } else {
             $user = "root";
             $password = "";
             $database = "garage";
@@ -19,8 +21,6 @@ class MySQL {
                 echo $e->getMessage();
                 return null;
             }
-        } else {
-            return self::$connection;
         }
     }
 }
