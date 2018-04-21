@@ -10,15 +10,13 @@ class MySQL
      */
     public static function getConnection()
     {
-        if (isset(self::$connection))
+        if (isset(self::$connection)) {
             return self::$connection;
-
-        $user = "root";
-        $password = "";
-        $database = "garage";
+        }
+        $config = require __DIR__ . "/../config.php";
 
         try {
-            self::$connection = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+            self::$connection = new PDO("mysql:host=$config->host;dbname=$config->databaste", $config->user, $config->password);
             return self::$connection;
         } catch (PDOException $e) {
             echo $e->getMessage();
