@@ -1,7 +1,12 @@
 <?php
-require_once __DIR__ . "/../connection/MySQL.php";
-require_once __DIR__ . "/../models/Auto.php";
+namespace Garage\Managers;
 
+
+use Garage\Connection\MySQL;
+use Garage\Models\Auto;
+use PDO;
+
+require_once __DIR__ . "/../autoload.php";
 class AutoManager
 {
     /**
@@ -12,18 +17,18 @@ class AutoManager
     {
         $stmt = MySQL::getConnection()->prepare("SELECT * FROM auto WHERE kenteken = ?");
         $stmt->execute([$kenteken]);
-        return $stmt->fetchObject('Auto');
+        return $stmt->fetchObject(Auto::class);
     }
 
     /**
-     * @param $kenteken
+     * @param $id
      * @return Auto
      */
     public static function getAutoById($id)
     {
         $stmt = MySQL::getConnection()->prepare("SELECT * FROM auto WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetchObject('Auto');
+        return $stmt->fetchObject(Auto::class);
     }
 
     /**
@@ -33,7 +38,7 @@ class AutoManager
     {
         $stmt = MySQL::getConnection()->prepare("SELECT * FROM auto");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Auto');
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Auto::class);
     }
 
     /**

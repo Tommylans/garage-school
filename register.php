@@ -1,8 +1,3 @@
-<?php
-session_start();
-require_once "models/User.php";
-?>
-
 <!doctype html>
 <html lang="en">
 <head>

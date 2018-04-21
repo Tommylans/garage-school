@@ -1,7 +1,11 @@
 <?php
-require_once __DIR__ . "/../models/User.php";
-require_once __DIR__ . "/../connection/MySQL.php";
+namespace Garage\Managers;
 
+use Garage\Connection\MySQL;
+use Garage\Models\User;
+use PDO;
+
+require_once __DIR__ . "/../autoload.php";
 class UserManager
 {
     /**
@@ -44,7 +48,7 @@ class UserManager
         $stmt->execute([
             $email
         ]);
-        return $stmt->fetchObject('User');
+        return $stmt->fetchObject(User::class);
     }
 
     /**
@@ -55,7 +59,7 @@ class UserManager
     {
         $stmt = MySQL::getConnection()->prepare("SELECT * FROM users WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetchObject('User');
+        return $stmt->fetchObject(User::class);
     }
 
     /**
@@ -65,7 +69,7 @@ class UserManager
     {
         $stmt = MySQL::getConnection()->prepare('SELECT * FROM users');
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+        return $stmt->fetchAll(PDO::FETCH_CLASS, User::class);
     }
 
     /**

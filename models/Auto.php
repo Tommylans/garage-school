@@ -1,8 +1,11 @@
 <?php
 
-require_once __DIR__ .  "/../managers/UserManager.php";
+namespace Garage\Models;
 
-class auto
+use Garage\Managers\UserManager;
+
+require_once __DIR__ . "/../autoload.php";
+class Auto
 {
     var $id,
         $kenteken,

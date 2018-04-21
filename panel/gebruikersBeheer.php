@@ -1,7 +1,9 @@
 <?php
+
+use Garage\Managers\UserManager;
+
 session_start();
-require_once __DIR__ . "/../managers/UserManager.php";
-require_once __DIR__ . "/../managers/AutoManager.php";
+require_once __DIR__ . "/../autoload.php";
 if (!UserManager::isLoggedin()) {
     header("Location: /index.php");
     exit();

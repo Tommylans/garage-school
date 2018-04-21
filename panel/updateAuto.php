@@ -1,6 +1,10 @@
 <?php
+
+use Garage\Managers\AutoManager;
+use Garage\Managers\UserManager;
+
+require_once __DIR__ . "/../autoload.php";
 session_start();
-require_once __DIR__ . "/../managers/UserManager.php";
 $user = UserManager::getUserById($_SESSION['id']);
 if ($user->getRole() !== "Planner" && $user->getRole() !== "Systeembeheerder") {
     header("Location: index.php");
