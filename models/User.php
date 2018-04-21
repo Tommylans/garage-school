@@ -1,6 +1,10 @@
 <?php
-require_once __DIR__ . "/../managers/AutoManager.php";
+namespace Garage\Models;
 
+use Garage\Connection\MySQL;
+use PDO;
+
+require_once __DIR__ . "/../autoload.php";
 class User
 {
     var $id,
@@ -60,6 +64,6 @@ class User
     {
         $stmt = MySQL::getConnection()->prepare("SELECT * FROM auto WHERE klantid = ?");
         $stmt->execute([$this->id]);
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Auto');
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Auto::class);
     }
 }

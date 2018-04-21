@@ -1,5 +1,10 @@
 <?php
+namespace Garage\Connection;
 
+use PDO;
+use PDOException;
+
+require_once __DIR__ . "/../autoload.php";
 class MySQL
 {
 

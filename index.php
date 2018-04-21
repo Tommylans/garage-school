@@ -1,6 +1,9 @@
 <?php
+
+use Garage\Managers\UserManager;
+
+require_once "autoload.php";
 session_start();
-require_once "models/User.php";
 if (UserManager::isLoggedin()) {
     header("Location: panel/index.php");
     exit();

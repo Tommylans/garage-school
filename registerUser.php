@@ -1,5 +1,8 @@
 <?php
-require_once "managers/UserManager.php";
+
+use Garage\Managers\UserManager;
+
+require_once "autoload.php";
 if (UserManager::getUserByEmail($_POST['email']) == false) {
     if (isset($_POST['password'])) {
         UserManager::createUser(
